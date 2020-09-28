@@ -1,0 +1,24 @@
+//当前规则文件用于测试Drools内置方法，这个就是一个逻辑的概念，相同包是可以互相访问的
+package student
+import com.itheima.drools.entity.Student
+
+
+//当前规则用于测试insert内置方法
+rule "要求Student的age等于10岁"
+ salience 11
+    when
+        $student:Student(age == 10)
+    then
+         $student.setAge(15);
+//        update($student)
+        System.out.println("规则：要求Student的age等于10岁触发了...");
+end
+
+rule "要求Student的age小于10岁"
+ salience 10
+    when
+        $student:Student(age > 10)
+    then
+        $student.setAge(20);
+        System.out.println("规则：要求Student的age大于===============================10岁触发了...");
+end
